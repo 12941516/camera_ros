@@ -4,12 +4,12 @@ import numpy as np
 from rclpy.node import Node
 from sensor_msgs.msg import CompressedImage
 
-class Camera2Test(Node):
+class VideoSubscriber(Node):
     def __init__(self):
         super().__init__('camera2_test_node')
         self.videoSubscriber = self.create_subscription(
             CompressedImage,
-            '/camera2',
+            '/camera/Compressed',
             self.videoSubscriber_callback,
             10
         )
@@ -30,7 +30,7 @@ class Camera2Test(Node):
 
 def main():
     rclpy.init()
-    node = Camera2Test()
+    node = VideoSubscriber()
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
