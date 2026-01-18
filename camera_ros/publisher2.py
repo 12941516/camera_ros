@@ -35,15 +35,6 @@ class NormalVideoPublisher(Node):
             return
         frame = cv2.resize(frame, (640,480))
         
-        '''
-        # Show undistorted video
-        cv2.imshow('Undistorted Video', undistorted)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            cv2.destroyAllWindows()
-            rclpy.shutdown()
-            return
-        '''
-        
         # Publish as CompressedImage
         msg = CompressedImage()
         msg.header.stamp = self.get_clock().now().to_msg()
