@@ -2,8 +2,6 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import CompressedImage
 import cv2
-import pickle
-import os
 import numpy as np
 
 class NormalVideoPublisher(Node):
