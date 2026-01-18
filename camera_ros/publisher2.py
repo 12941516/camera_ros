@@ -39,7 +39,6 @@ class NormalVideoPublisher(Node):
         msg.data = np.array(buffer).tobytes()
         self.pub.publish(msg)
 
-
 def main(args=None):
     rclpy.init(args=args)
     node = NormalVideoPublisher()
