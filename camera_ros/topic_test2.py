@@ -26,7 +26,6 @@ class VideoSubscriber(Node):
         if cv2.waitKey(1) & 0xFF == ord('q'):
             cv2.destroyAllWindows()
             self.destroy_node()
-            rclpy.shutdown()
 
 def main():
     rclpy.init()
