@@ -7,17 +7,13 @@ import numpy as np
 class NormalVideoPublisher(Node):
     def __init__(self):
         super().__init__('normal_video_publisher')
-
-        # Publisher
         self.pub = self.create_publisher(CompressedImage, 'camera2', 10)
 
-        # Open camera
         self.cap = cv2.VideoCapture(2)
         if not self.cap.isOpened():
             self.get_logger().error("Cannot open camera2.")
             return
 
-        # Prepare undistortion map
         ret, frame = self.cap.read()
         if not ret:
             self.get_logger().error("Failed to grab a frame for calibration mapping.")
@@ -33,7 +29,6 @@ class NormalVideoPublisher(Node):
             return
         frame = cv2.resize(frame, (640,480))
         
-        # Publish as CompressedImage
         msg = CompressedImage()
         msg.header.stamp = self.get_clock().now().to_msg()
         msg.format = 'jpeg'
