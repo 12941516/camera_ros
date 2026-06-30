@@ -9,7 +9,7 @@ class VideoSubscriber(Node):
         super().__init__('camera2_test_node')
         self.videoSubscriber = self.create_subscription(
             CompressedImage,
-            '/camera/Compressed',
+            '/camera2',
             self.videoSubscriber_callback,
             10
         )
